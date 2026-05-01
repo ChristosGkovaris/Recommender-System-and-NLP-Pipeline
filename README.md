@@ -1,4 +1,4 @@
-# Data-Mining-Algorithms-Collection
+# Recommender-System-and-NLP-Pipeline
 
 This project implements **Data Mining and Machine Learning algorithms** in **Python**, including **Reservoir
 Sampling**, **Collaborative Filtering**, **K-Means Clustering**, and **NLP Classification**. It was developed
@@ -20,7 +20,7 @@ as part of the **MYE012 - Data Mining** course at the **University of Ioannina**
 
 ## OVERVIEW
 
-The **Data-Mining-Algorithms-Collection** repository consists of three primary modules based on the course assignments:
+The **Recommender-System-and-NLP-Pipeline** repository consists of three primary modules based on the course assignments:
 
 ### **1. Sampling & Exploration**
 A foundational module focusing on streaming data and exploratory analysis of movie datasets.
