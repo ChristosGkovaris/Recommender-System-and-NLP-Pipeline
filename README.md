@@ -1,116 +1,254 @@
-# Data-Mining-Algorithms-Collection
+# RECOMMENDER SYSTEM AND NLP PIPELINE
 
-This project implements **Data Mining and Machine Learning algorithms** in **Python**, including **Reservoir
-Sampling**, **Collaborative Filtering**, **K-Means Clustering**, and **NLP Classification**. It was developed
-as part of the **MYE012 - Data Mining** course at the **University of Ioannina**.
+This repository contains three **Python-based data mining projects** covering exploratory data analysis, recommender systems, clustering, text classification, and graph-based recommendation methods. The projects were developed as part of the **MYE012 – Data Mining** course at the **University of Ioannina**.
 
 ---
 
 ## TABLE OF CONTENTS
-1. [Overview](#overview)  
-2. [Features](#features)  
-3. [Input Data](#input-data)  
-4. [Algorithms Implemented](#algorithms-implemented)  
-5. [Implementation Details](#implementation-details)  
-6. [Usage](#usage)  
-7. [License](#license)  
-8. [Contact](#contact)
+
+1. [Overview](#overview)
+2. [Tech Stack](#tech-stack)
+3. [Features](#features)
+4. [Architecture](#architecture)
+5. [Project Structure](#project-structure)
+6. [Input Data](#input-data)
+7. [Algorithms Implemented](#algorithms-implemented)
+8. [Installation](#installation)
+9. [Usage](#usage)
+10. [Contributors](#contributors)
+11. [License](#license)
+12. [Contact](#contact)
 
 ---
 
 ## OVERVIEW
 
-The **Data-Mining-Algorithms-Collection** repository consists of three primary modules based on the course assignments:
+The repository consists of three independent coursework projects focused on different areas of data mining and machine learning.
 
-### **1. Sampling & Exploration**
-A foundational module focusing on streaming data and exploratory analysis of movie datasets.
-- Implements **Reservoir Sampling** to select K random items uniformly from an unknown stream N.
-- Explores dataset distributions (Zipf plots, cumulative frequencies) and performs statistical hypothesis testing (t-test, chi-test).
+The projects cover:
 
-### **2. Recommender Systems**
-A robust recommendation engine built to predict movie ratings.
-- Evaluates **User Average (UA)** and **Item Average (IA)** baselines.
-- Implements **Singular Value Decomposition (SVD)** for rank-k approximations.
-- Features **User-Based Collaborative Filtering (UCF)** and **Item-Based (ICF)** algorithms.
+- Streaming-data sampling with Reservoir Sampling
+- Exploratory and statistical analysis of movie metadata
+- Rating prediction through baseline and collaborative filtering methods
+- Sparse-matrix factorization using Singular Value Decomposition
+- Movie clustering based on user-rating behavior
+- Text-based movie genre classification
+- Personalized PageRank for graph-based user similarity
 
-### **3. Clustering & Classification**
-Advanced machine learning applications for grouping and predicting movie features.
-- Applies **K-Means** and **Agglomerative Clustering** to user rating behavior.
-- Uses **TF-IDF** and **Word2Vec** to extract text features from movie overviews.
-- Trains various classifiers (Decision Tree, KNN, Logistic Regression, SVM, MLP) to predict movie genres.
+The implementations combine data processing, statistical analysis, sparse matrix operations, machine learning, natural language processing, and graph algorithms.
+
+---
+
+## TECH STACK
+
+- **Language:** Python
+- **Data Processing:** Pandas, NumPy
+- **Scientific Computing:** SciPy
+- **Machine Learning:** scikit-learn
+- **Natural Language Processing:** NLTK, Gensim
+- **Graph Processing:** NetworkX
+- **Visualization:** Matplotlib, Seaborn
+- **Sparse Data Structures:** SciPy sparse matrices
+- **Environment:** Google Colab / Jupyter Notebook
 
 ---
 
 ## FEATURES
 
-### **Statistical & Data Analysis**
-- Hypothesis Testing: Verifies assumptions like "longer movies have higher budgets but lower ratings" or gender-based budget disparities.
-- Visual Validation: Generates confidence intervals, scatter plots, heatmaps, and elbow/silhouette plots.
+- **Sampling & Exploratory Analysis**
+  - Reservoir Sampling over streaming input
+  - Dataset cleaning and transformation
+  - Distribution and Zipf analysis
+  - Correlation analysis
+  - Statistical hypothesis testing
+  - Genre and director analysis
 
-### **Recommender Engines**
-- Matrix Factorization: Uses SVD to predict ratings without building dense matrices in memory.
-- Graph-Based Similarity: Enhances UCF using **Personalized PageRank (PPR)** to calculate user similarities on a weighted graph.
-- Optimization Control: Vectorized implementation utilizing strict array operations to achieve execution times under 5 seconds.
+- **Recommender Systems**
+  - User Average and Item Average baselines
+  - SVD-based rating prediction
+  - User-Based Collaborative Filtering
+  - Item-Based Collaborative Filtering
+  - Centered-rating collaborative filtering
+  - RMSE-based model evaluation
+
+- **Clustering & Classification**
+  - K-Means clustering
+  - Agglomerative clustering
+  - Dimensionality reduction with Truncated SVD
+  - Cluster interpretation through genre lift
+  - TF-IDF and word-embedding text representations
+  - Multiple supervised classification models
+  - 5-fold stratified cross-validation
+
+- **Graph-Based Recommendation**
+  - User similarity graph construction
+  - Personalized PageRank
+  - PageRank-weighted collaborative filtering
+
+---
+
+## ARCHITECTURE
+
+The repository is organized into three independent coursework modules.
+
+- **Exercise 1** focuses on data sampling and exploratory statistical analysis.
+- **Exercise 2** focuses on matrix-based and neighborhood-based recommender systems.
+- **Exercise 3** combines unsupervised learning, supervised text classification, and graph-based recommendation.
+
+Each project operates directly on external datasets and implements the corresponding analytical or machine-learning workflow independently.
+
+---
+
+## PROJECT STRUCTURE
+
+```text
+.
+├── exercise-1-sampling-exploration/
+│   ├── reservoir_sampling.py
+│   ├── exploration.py
+│   └── README.md
+│
+├── exercise-2-recommender-systems/
+│   ├── ex2_5203.py
+│   └── README.md
+│
+├── exercise-3-clustering-classification/
+│   ├── ex3_5203.py
+│   └── README.md
+│
+└── README.md
+```
 
 ---
 
 ## INPUT DATA
 
-### **Movie Metadata & Credits**
-- Structure: Includes features like `budget`, `revenue`, `genres`, `release_date`, and `vote_average`.
-- Text Data: Movie overviews used for NLP classification.
+The projects use movie-related datasets containing:
 
-### **Ratings Datasets**
-- Samples: 100,000 ratings from 673 users for 9,066 movies (split into 90% train and 10% test subsets).
-- Format: Sparse user-movie interactions formatted as `(user_id, movie_id, rating)`.
+- Movie metadata
+- User ratings
+- Movie identifiers
+- Movie genres
+- Plot overviews
+- Credits and crew information
+- Train/test rating splits
+
+Depending on the exercise, the source files include:
+
+```text
+movies_metadata.csv
+credits.csv
+ratings_small.csv
+links_small.csv
+data_train.csv
+data_test.csv
+input-A.csv
+```
 
 ---
 
 ## ALGORITHMS IMPLEMENTED
 
-### **1. Data Mining & Sampling**
-- Reservoir Sampling: Single-pass (K) memory uniform sampling.
-- Maximum Likelihood Estimation (MLE): Fitting power-law distributions and Expectation-Maximization (EM) for mixture models.
+### Sampling & Statistical Analysis
 
-### **2. Recommender Systems & Graph Algorithms**
-- Collaborative Filtering: Calculates cosine similarities to find nearest neighbors (k) for rating predictions.
-- Personalized PageRank: Random walk with restarts to evaluate structural node similarity.
+- Reservoir Sampling
+- Pearson correlation
+- Welch's t-test
+- Chi-square test of independence
+- Zipf and cumulative-frequency analysis
 
-### **3. Machine Learning**
-- Clustering: K-Means optimization evaluated via Silhouette Coefficient and Sum of Squared Errors.
-- NLP Pipelines: Stop-word removal and Word2Vec mean pooling.
+### Recommender Systems
+
+- User Average
+- Item Average
+- Truncated Singular Value Decomposition
+- User-Based Collaborative Filtering
+- Mean-centered User-Based Collaborative Filtering
+- Item-Based Collaborative Filtering
+- Cosine similarity
+
+### Clustering
+
+- K-Means
+- Agglomerative Clustering
+- Truncated SVD dimensionality reduction
+- SSE / elbow analysis
+- Silhouette evaluation
+- Genre lift and entropy analysis
+
+### Classification
+
+- TF-IDF
+- Pre-trained word embeddings with mean pooling
+- Decision Tree
+- k-Nearest Neighbors
+- Logistic Regression
+- Support Vector Machine
+- Multilayer Perceptron
+- Stratified 5-fold cross-validation
+
+### Graph-Based Recommendation
+
+- User similarity graph construction
+- Personalized PageRank
+- PageRank-weighted User Collaborative Filtering
 
 ---
 
-## IMPLEMENTATION DETAILS
+## INSTALLATION
 
-- Language: Pure **Python** (Jupyter Notebooks).
-- Libraries: Heavily utilizes `pandas` for data wrangling, `numpy`/`scipy` for sparse matrix algebra, and `scikit-learn`/`gensim` for ML and NLP models.
-- Architecture: Strictly avoids explicit `for` loops during user/item traversals in favor of highly optimized, vectorized numpy operations.
-- Evaluation Metrics: Validated using **RMSE** (Root Mean Square Error) for recommenders and 5-fold cross-validation (Accuracy, Precision, Recall) for classifiers.
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
+
+2. Ensure Python and the required libraries are installed:
+
+```bash
+pip install pandas numpy scipy scikit-learn matplotlib seaborn nltk gensim networkx
+```
+
+3. Place the required datasets in the corresponding exercise directories.
 
 ---
 
 ## USAGE
 
-### **Run the Analysis Notebooks**
-1. Navigate to the project directory.
-2. Ensure Python 3 and Jupyter are installed (along with `pandas`, `numpy`, `scikit-learn`, `gensim`, etc.).
-3. Open the notebooks: `jupyter notebook`
-4. Run the `.ipynb` files sequentially (e.g., `Reservoir_Sampling.ipynb`, `ex2_5203.ipynb`, `ex3_5203.ipynb`).
-5. Ensure the Kaggle `movies_metadata.csv`, `credits.csv`, and `ratings_small.csv` datasets are placed in the root directory.
+Each exercise is executed independently.
+
+For script versions:
+
+```bash
+python reservoir_sampling.py
+python exploration.py
+python ex2_5203.py
+python ex3_5203.py
+```
+
+The source files were generated from Google Colab notebooks and may also be executed interactively in a compatible notebook environment.
+
+Refer to each exercise README for its required datasets and implemented workflow.
+
+---
+
+## CONTRIBUTORS
+
+- **Christos Gkovaris** — GitHub: [ChristosGkovaris](https://github.com/ChristosGkovaris)
 
 ---
 
 ## LICENSE
 
-This project was developed for academic purposes as part of the **MYE012 - Data Mining** course at the University of Ioannina.
+No formal software license is included in the provided project files.
 
-Final implementation by the project creators.
+This repository contains academic projects developed as part of the **MYE012 – Data Mining** course at the **University of Ioannina**.
 
 ---
 
 ## CONTACT
 
-**Christos-Grigorios Gkovaris** University of Ioannina – Computer Science and Engineering  
-GitHub: [ChristosGkovaris](https://github.com/ChristosGkovaris)
+**Christos Gkovaris**  
+Computer Science and Engineering  
+University of Ioannina  
